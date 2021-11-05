@@ -1,10 +1,10 @@
 ﻿using FastqlSample.Infrastructure.Models;
 using Dapper;
-using Fastsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Fastql;
 
 namespace FastqlSample.Infrastructure.Core.Repository
 {
@@ -14,7 +14,7 @@ namespace FastqlSample.Infrastructure.Core.Repository
 
         public GenericRepository(IDbTransaction transaction) : base(transaction)
         { 
-            fastql = new FastqlBuilder<TEntity>((TEntity)Activator.CreateInstance(typeof(TEntity)));
+            fastql = new FastqlBuilder<TEntity>();
         }
 
         public Response<TEntity> Get(int id)
